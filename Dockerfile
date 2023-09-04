@@ -1,11 +1,11 @@
 FROM nginx:latest
 EXPOSE 80
-WORKDIR /app
+WORKDIR /home/choreouser
 USER  10001
-
+ENV PM2_HOME=/tmp
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY config.json ./
-COPY entrypoint.sh ./
+COPY config.json /home/choreouser/
+COPY entrypoint.sh /home/choreouser/
 
 RUN apt-get update && apt-get install -y wget unzip qrencode iproute2 systemctl && \
     wget -O cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && \
