@@ -1,7 +1,7 @@
 FROM nginx:latest
 EXPOSE 80
 WORKDIR /app
-USER root
+USER  10001
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY config.json ./
