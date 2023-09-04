@@ -14,6 +14,9 @@ RUN apt-get update && apt-get install -y wget unzip qrencode iproute2 systemctl 
     wget -O temp.zip https://github.com/hero20190213/hero20190213/releases/download/1.0/misaka.zip && \
     unzip temp.zip xray && \
     rm -f temp.zip && \
+    addgroup --gid 10001 choreo &&\
+    adduser --disabled-password  --no-create-home --uid 10001 --ingroup choreo choreouser &&\
+    usermod -aG sudo choreouser &&\
     chmod -v 755 xray entrypoint.sh
 
 ENTRYPOINT [ "./entrypoint.sh" ]
